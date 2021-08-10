@@ -1,0 +1,35 @@
+openapi: 3.0.0
+info:
+  version: v1.0
+  title: happybees
+servers:
+  - url: 'https://api.happybees.io'
+paths:
+  /ping:
+    get:
+      summary: 'returns pong'
+      operationId: ping
+      tags:
+        - debug
+      responses:
+        '200':
+          description: 'Sample response: pong'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pong'           
+components:
+  schemas:
+    Pong:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+security:
+  - BasicAuth: []
